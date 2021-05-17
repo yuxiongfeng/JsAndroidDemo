@@ -6,6 +6,7 @@ import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
+import com.proton.ecgcard.connector.EcgCardManager;
 
 /**
  * @Description:
@@ -18,6 +19,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        EcgCardManager.init(this);
         FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()
                 .showThreadInfo(false)  // (Optional) Whether to show thread info or not. Default true
                 .methodCount(0)         // (Optional) How many method line to show. Default 2

@@ -11,16 +11,41 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/btnCallJs"
-        >
+        app:layout_constraintBottom_toTopOf="@+id/llbottom"
+        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/llbottom"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <Button
+            android:id="@+id/connectCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="connectCard"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/disconnect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="disconnect"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btnCallJs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="sendDataToH5"
+            android:textAllCaps="false" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnCallJs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
