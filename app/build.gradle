@@ -40,5 +40,9 @@ dependencies {
     implementation 'com.github.Justson.AgentWeb:agentweb-filechooser:v4.1.9-androidx' // (可选)
     implementation 'com.github.Justson:Downloader:v4.1.9-androidx' // (可选)
     implementation 'com.proton.ecg.card:ble:1.0.1'
-    implementation 'com.proton.ecg:alg:1.0.5'
+//    implementation 'com.proton.ecg:alg:1.0.5'
+    implementation project(':ecgAlgorithm')
+    implementation 'com.proton.ecg.decrypt:decrypt:1.0.0'
+    implementation 'com.proton.ecg.encrypt:encrypt:1.0.2'
+    implementation 'com.proton:protonecg:1.2.1'
 }

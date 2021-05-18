@@ -12,7 +12,14 @@
         android:layout_height="0dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/llbottom"
-        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
+        app:layout_constraintTop_toTopOf="parent">
+<!--        <com.proton.view.EcgRealTimeView-->
+<!--            android:id="@+id/id_ecg_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            />-->
+    </LinearLayout>
 
 
     <LinearLayout

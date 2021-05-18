@@ -11,19 +11,24 @@ import android.widget.Toast;
 
 import com.just.agentweb.AgentWeb;
 import com.orhanobut.logger.Logger;
-import com.proton.ecg.algorithm.callback.EcgPatchAlgorithmListener;
+import com.proton.decrypt.DecryptHelper;
+import com.proton.ecg.algorithm.callback.EcgAlgorithmListener;
 import com.proton.ecg.algorithm.interfaces.IEcgAlgorithm;
+import com.proton.ecg.algorithm.interfaces.impl.EcgCardAlgorithm;
 import com.proton.ecg.algorithm.interfaces.impl.EcgPatchAlgorithm;
 import com.proton.ecgcard.connector.EcgCardManager;
 import com.proton.ecgcard.connector.callback.DataListener;
 import com.proton.ecgcard.connector.utils.BleUtils;
+import com.proton.view.EcgRealTimeView;
 import com.wms.ble.callback.OnConnectListener;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private AgentWeb mAgentWeb;
+//    EcgRealTimeView ecgRealTimeView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +43,12 @@ public class MainActivity extends AppCompatActivity {
                 .useDefaultIndicator()
                 .createAgentWeb()
                 .ready()
-                .go("http://192.168.2.16:3000/#/");
+                .go("https://ecgtest.protontek.com/ecg-andlik/#/");
+//                .go("http://192.168.2.16:3000/#/");
 
         mAgentWeb.getJsInterfaceHolder().addJavaObject("android", new AndroidJSInterface());
 
+       // ecgRealTimeView = findViewById(R.id.id_ecg_view);
         findViewById(R.id.connectCard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,14 +72,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void connectCard() {
-        IEcgAlgorithm ecgAlgorithm = new EcgPatchAlgorithm(new EcgPatchAlgorithmListener() {
+//        ecgRealTimeView.setWaveSpeed(25.0f);
+//        ecgRealTimeView.setSample(500);
+        IEcgAlgorithm ecgAlgorithm = new EcgCardAlgorithm(new EcgAlgorithmListener() {
             @Override
             public void receiveEcgFilterData(byte[] bytes) {
                 super.receiveEcgFilterData(bytes);
-
-               // DecryptHelper.decryptFilterData(data).getFilterDatas()
-                mAgentWeb.getJsAccessEntrace().quickCallJs("callByAndroid", BleUtils.bytesToHexString(bytes));
-                //Logger.d("android ecgData:%s", BleUtils.bytesToHexString(bytes));
+                List<Float> filterDatum = DecryptHelper.decryptFilterData(bytes).getFilterDatas();
+                mAgentWeb.getJsAccessEntrace().quickCallJs("callByAndroid", filterDatum.toString());
+//                ecgRealTimeView.addEcgData(DecryptHelper.decryptFilterData(bytes).getFilterDatas());//加载解密后的数
+//                ecgRealTimeView.addEcgData(ecgData);
+//                if (!ecgRealTimeView.isRunning()) {
+//                    ecgRealTimeView.startDrawWave();
+//                }
+                //Logger.d("android ecgData:%s", s);
             }
         });
 
@@ -104,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
             public void onDisconnect(boolean b) {
                 super.onDisconnect(b);
                 Logger.d("disconnect");
-
             }
         };
 
