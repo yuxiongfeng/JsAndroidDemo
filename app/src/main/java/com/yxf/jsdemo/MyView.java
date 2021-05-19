@@ -13,8 +13,12 @@ import androidx.annotation.Nullable;
 
 import com.orhanobut.logger.Logger;
 
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+
 /**
- * @Description:
+ * @Description:自定义view
  * @Author: yxf
  * @CreateDate: 2021/5/19 14:38
  * @UpdateUser: yxf
@@ -60,8 +64,29 @@ public class MyView extends View {
             textColor = typedArray.getColor(R.styleable.MyView_circleTextColor, Color.parseColor("#333333"));
             textSize = typedArray.getDimensionPixelSize(R.styleable.MyView_circleTextSize, 12);
         }
+
         initPaint();
+
+        this.setOnClickListener(v -> {
+            text = randomText();
+            postInvalidate();
+        });
     }
+
+    private String randomText() {
+        Random random = new Random();
+        Set<Integer> set = new HashSet<Integer>();
+        while (set.size() < 4) {
+            int randomInt = random.nextInt(10);
+            set.add(randomInt);
+        }
+        StringBuffer sb = new StringBuffer();
+        for (Integer i : set) {
+            sb.append("" + i);
+        }
+        return sb.toString();
+    }
+
 
     private void initPaint() {
         mCirclePaint = new Paint();
