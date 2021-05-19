@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         mAgentWeb.getJsInterfaceHolder().addJavaObject("android", new AndroidJSInterface());
 
-       // ecgRealTimeView = findViewById(R.id.id_ecg_view);
+        // ecgRealTimeView = findViewById(R.id.id_ecg_view);
         findViewById(R.id.connectCard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -160,6 +160,5 @@ public class MainActivity extends AppCompatActivity {
         public void onMessage() {
 
         }
-
     }
 }
