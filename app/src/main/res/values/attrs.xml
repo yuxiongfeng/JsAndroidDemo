@@ -2,10 +2,27 @@
 <resources>
     <!--自定义属性-->
     <declare-styleable name="MyView">
-        <attr name="circleColor" format="color"/>
-        <attr name="circleRadius" format="dimension"/>
-        <attr name="circleText" format="string"/>
-        <attr name="circleTextColor" format="color"/>
-        <attr name="circleTextSize" format="dimension"/>
+        <attr name="circleColor" format="color" />
+        <attr name="circleRadius" format="dimension" />
+        <attr name="circleText" format="string" />
+        <attr name="circleTextColor" format="color" />
+        <attr name="circleTextSize" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="MyCircle">
+        <attr name="radius" format="dimension" />
+        <attr name="color" format="color" />
+        <attr name="externalStrokeWidth" format="dimension"/>
+        <attr name="externalRadius" format="dimension" />
+        <attr name="externalColor" format="color" />
+    </declare-styleable>
+
+
+    <declare-styleable name="MyText">
+        <attr name="text" format="string"/>
+        <attr name="textColor" format="color"/>
+        <attr name="size" format="dimension"/>
+        <attr name="type" format="integer"/>
+    </declare-styleable>
+
 </resources>

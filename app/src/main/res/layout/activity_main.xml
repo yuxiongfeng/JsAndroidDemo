@@ -13,50 +13,15 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/llbottom"
         app:layout_constraintTop_toTopOf="parent">
-        <!--        <com.proton.view.EcgRealTimeView-->
-        <!--            android:id="@+id/id_ecg_view"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="match_parent"-->
-        <!--            android:layout_weight="1"-->
-        <!--            />-->
-        <com.yxf.jsdemo.MyView
+        <com.yxf.jsdemo.MyText
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:circleColor="#ffff00"
-            app:circleRadius="80dp"
-            app:circleText="centerText"
-            app:circleTextColor="#333334"
-            app:circleTextSize="12sp"
-            android:background="#eeeeee"
+            app:text="Hi好啊"
+            app:textColor="#333333"
+            app:size="16dp"
+            android:background="@drawable/text_bg"
             />
-
-        <com.yxf.jsdemo.MyLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/mylayout_bg">
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="button1"
-                android:textAllCaps="false" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="button2"
-                android:textAllCaps="false" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="button3"
-                android:textAllCaps="false" />
-
-        </com.yxf.jsdemo.MyLayout>
-
     </LinearLayout>
-
 
     <LinearLayout
         android:id="@+id/llbottom"

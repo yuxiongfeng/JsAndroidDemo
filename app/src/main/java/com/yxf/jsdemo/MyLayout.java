@@ -46,10 +46,12 @@ public class MyLayout extends ViewGroup {
         containerHeight = MeasureSpec.getSize(heightMeasureSpec);
         Logger.w("onMeasure width:%d,height:%d", containerWidth, containerHeight);
         //测量子view
-        for (int i = 0; i < getChildCount(); i++) {
-            View childAt = getChildAt(i);
-            measureChild(childAt, widthMeasureSpec, heightMeasureSpec);
-        }
+//        for (int i = 0; i < getChildCount(); i++) {
+//            View childAt = getChildAt(i);
+//            measureChild(childAt, widthMeasureSpec, heightMeasureSpec);
+//        }
+        //等价于上面代码
+        measureChildren(widthMeasureSpec, heightMeasureSpec);
     }
 
     @Override
@@ -72,14 +74,7 @@ public class MyLayout extends ViewGroup {
         super.onDraw(canvas);
         canvas.drawLine(0, containerHeight / 2, containerWidth, containerHeight / 2, mPaint);
         int childCount = getChildCount();
-       /* for (int i = 0; i < childCount; i++) {
-            View childView = getChildAt(i);
-            int measuredWidth = childView.getMeasuredWidth();
-            int measuredHeight = childView.getMeasuredHeight();
-            int width = childView.getWidth();
-            int height = childView.getHeight();
-            //从这里的打印我们可以知道measuredWidth,measuredHeight 在onMeasure之后就有值了， width 和 height 在onLayout之后才有值
-            Logger.w(TAG + "onDraw measureWidth:%d,MeasureHeight:%d,width:%d,height:%d", measuredWidth, measuredHeight, width, height);
-        }*/
+        //弄清楚width  height  measureWidth  measureHeight值的区别？
+        //measureWidth和measureHeight都是在onMeasure执行后就有值了，而width和height都是在onLayout之后才有值
     }
 }

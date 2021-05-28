@@ -19,6 +19,8 @@ import java.util.Set;
 
 /**
  * @Description:自定义view
+ * 步骤：
+ * 1.定义属性  xml/value/attrs.xml  确定view的属性
  * @Author: yxf
  * @CreateDate: 2021/5/19 14:38
  * @UpdateUser: yxf
@@ -71,6 +73,7 @@ public class MyView extends View {
             text = randomText();
             postInvalidate();
         });
+
     }
 
     private String randomText() {
@@ -96,6 +99,7 @@ public class MyView extends View {
         mTextPaint = new Paint();
         mTextPaint.setColor(textColor);
         mTextPaint.setTextSize(textSize);
+
         mBound = new Rect();
         mTextPaint.getTextBounds(text, 0, text.length(), mBound);
         mTextPaint.setTextAlign(Paint.Align.CENTER);
@@ -104,6 +108,8 @@ public class MyView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int mode = MeasureSpec.getMode(widthMeasureSpec);
+        Logger.w(TAG + "mode:%d", mode);
         viewWidth = MeasureSpec.getSize(widthMeasureSpec);
         viewHeight = MeasureSpec.getSize(heightMeasureSpec);
         Logger.w(TAG + "widthMeasureSpec:%d,heightMeasureSpec:%d", viewWidth, viewHeight);

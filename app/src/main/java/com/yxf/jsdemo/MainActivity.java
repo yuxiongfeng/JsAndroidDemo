@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Logger.d("log start.");
+
         //需要获取定位权限，否则搜索不到设备
         PermissionUtils.getLocationPermission(this);
 
@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
                 .useDefaultIndicator()
                 .createAgentWeb()
                 .ready()
-                .go("https://ecgtest.protontek.com/ecg-andlik/#/");
-//                .go("http://192.168.2.16:3000/#/");
+//                .go("https://ecgtest.protontek.com/ecg-andlik/#/");
+                .go("http://192.168.2.16:3000/#/");
 
         mAgentWeb.getJsInterfaceHolder().addJavaObject("android", new AndroidJSInterface());
 
@@ -69,9 +69,17 @@ public class MainActivity extends AppCompatActivity {
                 EcgCardManager.getInstance("0C:61:CF:C1:2D:52").disConnect();
             }
         });
+//        int i = new LockAndThread().fSum(100);
+
     }
 
     private void connectCard() {
+        if (true) {
+//            TestRxjava.start1();
+//            TestRxjava.fetchList();
+            TestRxjava.testJust();
+            return;
+        }
 //        ecgRealTimeView.setWaveSpeed(25.0f);
 //        ecgRealTimeView.setSample(500);
         IEcgAlgorithm ecgAlgorithm = new EcgCardAlgorithm(new EcgAlgorithmListener() {
@@ -125,40 +133,23 @@ public class MainActivity extends AppCompatActivity {
                 .connectEcgCard(connectListener);
     }
 
+    /**
+     * call js method
+     */
     private void callJs() {
         String params = "1,2,3,4,5,6,7";
         mAgentWeb.getJsAccessEntrace().quickCallJs("callByAndroid", params);
     }
 
+    /**
+     * export to js use
+     */
     class AndroidJSInterface {
-        /**
-         * 跳转到配网
-         */
-        @JavascriptInterface
-        public String goToDockerSetNet(int index) {
-//            Logger.d(String.valueOf(index));
-            Logger.d("跳转到setting page index:%s", String.valueOf(index));
-            return "it is callback from android";
-        }
-
         @JavascriptInterface
         public void addLog(String log) {
             Logger.d(log);
         }
-
-        @JavascriptInterface
-        public void getCurrentParam() {
-
-        }
-
-        @JavascriptInterface
-        public void getDeviceInfo() {
-
-        }
-
-        @JavascriptInterface
-        public void onMessage() {
-
-        }
     }
+
+
 }
