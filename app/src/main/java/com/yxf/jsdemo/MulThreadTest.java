@@ -11,7 +11,8 @@ import com.orhanobut.logger.Logger;
  * 0
  */
 public class MulThreadTest {
-    private int ticketNum = 100;
+
+    private int ticketNum = 50;
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
@@ -19,7 +20,7 @@ public class MulThreadTest {
                 try {
                     Thread.sleep(100);
                     sellTicket();
-                    Logger.w("ticket num : %d", ticketNum);
+
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -31,17 +32,36 @@ public class MulThreadTest {
      * three thread sell at same time
      */
     public void startSell() {
-        Thread t1 = new Thread(runnable);
-        Thread t2 = new Thread(runnable);
-//        Thread t3 = new Thread(runnable);
-        t1.start();
-        t2.start();
-//        t3.start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 100; i++) {
+                    sellTicket();
+                }
+            }
+        }).start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 100; i++) {
+                    sellTicket();
+                }
+            }
+        }).start();
     }
 
     //sell
-    private void sellTicket() {
-        //Logger.w("sell one ticket by ---%s", Thread.currentThread().getName());
-        ticketNum--;
+    private synchronized void sellTicket() {
+        if (ticketNum>1) {
+            try{
+                ticketNum--;
+                Logger.w("ticket num : %d thread :%s", ticketNum,Thread.currentThread().getName());
+                Thread.sleep(100);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
     }
 }

@@ -1,13 +1,22 @@
 package com.yxf.jsdemo;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import com.orhanobut.logger.Logger;
 import com.yxf.jsdemo.api.GitHubService;
 import com.yxf.jsdemo.api.bean.Repo;
 import com.yxf.jsdemo.api.retrofit.RetrofitFactory;
 
 import java.util.List;
+import java.util.concurrent.Flow;
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.BackpressureStrategy;
+import io.reactivex.Flowable;
+import io.reactivex.FlowableEmitter;
+import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -118,7 +127,6 @@ public class TestRxjava {
     }
 
     public static void testJust() {
-        //handle synchronized event
         Observable.just(justFunc())
                 .delay(2, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
@@ -150,4 +158,7 @@ public class TestRxjava {
         Logger.w("justFunc start thread is :%s", Thread.currentThread().getName());
         return "data form justFunc";
     }
+
+    private void testRxSync(){}
+
 }

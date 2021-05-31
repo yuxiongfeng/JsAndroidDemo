@@ -25,4 +25,12 @@
         <attr name="type" format="integer"/>
     </declare-styleable>
 
+    <declare-styleable name="Newsy">
+        <attr name="name" format="string"/>
+        <attr name="age" format="integer"/>
+        <attr name="sizeSy" format="string"/>
+        <attr name="heightSy" format="integer"/>
+        <attr name="character" format="string"/>
+    </declare-styleable>
+
 </resources>

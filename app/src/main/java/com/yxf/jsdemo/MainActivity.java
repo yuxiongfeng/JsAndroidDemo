@@ -77,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
         if (true) {
 //            TestRxjava.start1();
 //            TestRxjava.fetchList();
-            TestRxjava.testJust();
+//            TestRxjava.testJust();
+            new MulThreadTest().startSell();
             return;
         }
 //        ecgRealTimeView.setWaveSpeed(25.0f);

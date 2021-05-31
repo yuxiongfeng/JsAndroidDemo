@@ -21,6 +21,12 @@
             app:size="16dp"
             android:background="@drawable/text_bg"
             />
+
+        <com.yxf.jsdemo.widget.NewSy
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:name="xfsy"
+            />
     </LinearLayout>
 
     <LinearLayout
