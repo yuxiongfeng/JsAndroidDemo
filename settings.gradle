@@ -1,3 +1,3 @@
-include ':ecgAlgorithm'
+//include ':ecgAlgorithm'
 include ':app'
 rootProject.name = "JsDemo"

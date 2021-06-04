@@ -17,7 +17,6 @@
         <attr name="externalColor" format="color" />
     </declare-styleable>
 
-
     <declare-styleable name="MyText">
         <attr name="text" format="string"/>
         <attr name="textColor" format="color"/>

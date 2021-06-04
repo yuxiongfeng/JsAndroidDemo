@@ -13,20 +13,32 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/llbottom"
         app:layout_constraintTop_toTopOf="parent">
+
         <com.yxf.jsdemo.MyText
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:text="Hi好啊"
-            app:textColor="#333333"
-            app:size="16dp"
             android:background="@drawable/text_bg"
-            />
+            android:visibility="gone"
+            app:size="16dp"
+            app:text="Hi好啊"
+            app:textColor="#333333" />
 
         <com.yxf.jsdemo.widget.NewSy
+            android:id="@+id/idNew"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:name="xfsy"
-            />
+            android:background="@drawable/text_bg"
+            android:visibility="gone"
+            app:name="测试" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="测试"
+            android:textColor="#ff0000"
+            android:textSize="12sp"
+            android:visibility="gone" />
     </LinearLayout>
 
     <LinearLayout
